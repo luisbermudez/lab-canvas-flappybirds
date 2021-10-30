@@ -1,7 +1,4 @@
 // This is for classes
-const canvas = document.getElementById('my-canvas');
-const ctx = canvas.getContext('2d')
-
 class Background {
     constructor(w, h) {
         this.x = 0;
@@ -17,7 +14,7 @@ class Background {
             this.x = 0;
         }
         this.x--;
-        
+
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         ctx.drawImage(
             this.image,
@@ -29,6 +26,34 @@ class Background {
     }
 
     gameOver() {
+        ctx.font = '80px Arial';
+        ctx.fillText = ('Te moriste', 250, 200);
+    }
+}
 
+class Flappy {
+    constructor(x, y, w, h) {
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
+        this.vy = 2 // gravity
+        this.userPull = 0 // gravity
+        this.image = new Image();
+        this.image.src = '../images/flappy.png';
+    }
+
+    draw() {
+        // validar gravedad
+        ctx.drawImage(this.image, this.x, y, this.width, this.height);
+    }
+
+    collision(obstacle) {
+        return (
+            this.x < obstacle.x + obstacle.width && 
+            this.x + this.width > obstacle.x &&
+            this.y < obstacle.y + obstacle.height &&
+            this.y + this.height > obstacle.y
+        )
     }
 }
