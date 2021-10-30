@@ -13,7 +13,7 @@ class Background {
         if(this.x < -canvas.width) {
             this.x = 0;
         }
-        this.x--;
+        this.x -= 10;
 
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         ctx.drawImage(
@@ -37,15 +37,26 @@ class Flappy {
         this.y = y;
         this.width = w;
         this.height = h;
-        this.vy = 2 // gravity
-        this.userPull = 0 // gravity
+        this.vy = 2; // gravity
+        this.userPull = 0; // gravity
         this.image = new Image();
         this.image.src = '../images/flappy.png';
     }
 
     draw() {
         // validar gravedad
-        ctx.drawImage(this.image, this.x, y, this.width, this.height);
+        this.vy = this.vy + (gravity - this.userPull);
+        if(this.y <= 0) {
+            this.userPull = 0;
+            this.y = 2;
+            this.vy = 2;
+        }
+
+        if(this.y + this.height < canvas.height) {
+            this.y += this.vy;
+        }
+
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 
     collision(obstacle) {
