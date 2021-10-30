@@ -27,7 +27,10 @@ class Background {
 
     gameOver() {
         ctx.font = '80px Arial';
-        ctx.fillText = ('Te moriste', 250, 200);
+        ctx.fillStyle = 'black';
+        ctx.fillText = ('Te moriste', 250, 200, 200);
+
+        // ctx.drawImage('../images/flappy.png', 50, 50, 200, 200);
     }
 }
 
@@ -70,19 +73,19 @@ class Flappy {
 }
 
 class Pipe {
-    constructor(position, x, y, h) {
+    constructor(pos, x, y, h) {
         this.x = x;
         this.y = y;
-        this.width = 30;
+        this.width = 50;
         this.height = h;
         this.image = new Image();
         this.image.src =
-            position === 'top'
-            ? '../images/obstacle_top.png'
-            : '../images/obstacle_bottom.png';
+            pos === "top"
+            ? "images/obstacle_top.png"
+            : "images/obstacle_bottom.png";
     }
 
-    drwa() {
+    draw() {
         this.x -= 2;
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }

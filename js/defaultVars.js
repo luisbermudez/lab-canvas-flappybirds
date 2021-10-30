@@ -15,7 +15,8 @@ let requestId; // to stop videogame on crash
 
 // audio
 const audio = new Audio();
-audio.src = '';
+audio.src = '../audio/Battleship.ogg';
+audio.loop = true;
 
 // valore para hero
 let dylanDefault = {
