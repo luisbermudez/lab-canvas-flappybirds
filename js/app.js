@@ -68,3 +68,22 @@ class Flappy {
         )
     }
 }
+
+class Pipe {
+    constructor(position, x, y, h) {
+        this.x = x;
+        this.y = y;
+        this.width = 30;
+        this.height = h;
+        this.image = new Image();
+        this.image.src =
+            position === 'top'
+            ? '../images/obstacle_top.png'
+            : '../images/obstacle_bottom.png';
+    }
+
+    drwa() {
+        this.x -= 2;
+        ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    }
+}

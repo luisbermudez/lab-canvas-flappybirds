@@ -1,7 +1,7 @@
 window.onload = function() {
 
   const bg = new Background(canvas.width, canvas.height);
-  const flappy = new Flappy(20, 40, 30, 30);
+  const flappy = new Flappy( 70, 40, 30, 30);
 
   document.getElementById("start-button").onclick = function() {
     if(requestId) {
@@ -31,7 +31,7 @@ window.onload = function() {
 
   addEventListener('keydown', (e)=> {
     if(e.keyCode === 32) {
-      flappy.userPull = 0.5;
+      flappy.userPull = 0.3;
     }
   });
 
